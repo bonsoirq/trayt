@@ -1,0 +1,3 @@
+module Trayt
+  VERSION = "0.1.0"
+end
