@@ -64,4 +64,19 @@ RSpec.describe Trayt::Trait do
       end
     }.to raise_error(NotImplementedError, "Foo implements foo accepting 1 arguments instead of 2")
   end
+
+  it "does nothing when class implements trait properly" do
+    module Fooable
+      extend Trayt::Trait
+      claim_def foo: 2
+    end
+
+    expect {
+      class Foo
+        include Fooable
+        def foo(bar, baz)
+        end
+      end
+    }.not_to raise_error
+  end
 end
